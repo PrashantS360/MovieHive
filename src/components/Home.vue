@@ -6,11 +6,12 @@ import Movies from './Movies.vue'
   <header>
     <div class="form">
       <img src="/search.png" alt="searchIcon" class="searchIcon">
-      <input class="form-field" placeholder="Search movies by their titles" type="text" v-model="title" @change="this.searchMovies()">
+      <input class="form-field" placeholder="Search movies by their titles" type="text" v-model="title"
+        @change="() => { this.searchMovies() }">
     </div>
   </header>
 
-  <main >
+  <main>
     <Movies class="movie" :movies="movies" />
   </main>
 </template>
@@ -28,13 +29,13 @@ export default {
     getMovies() {
       for (let i = 100; i <= 300; i++) {
         fetch(`https://www.omdbapi.com/?i=tt3896${i}&apikey=3adf314a`).then(res => res.json()).then((data) => {
-          if (!data.Error && data.Title && data.Poster!="N/A" && data.Released!="N/A" && data.imdbRating!="N/A" && data.Genre!="N/A" && data.Plot!="N/A") {
+          if (!data.Error && data.Title && data.Poster != "N/A" && data.Released != "N/A" && data.imdbRating != "N/A" && data.Genre != "N/A" && data.Plot != "N/A") {
             this.movies.push(data);
           }
         })
       }
     },
-    searchMovies() {
+    searchMovies: function () {
       if (this.title.length) {
         this.movies = [];
         fetch(`https://www.omdbapi.com/?&t=${this.title}&apikey=3adf314a`).then(res => res.json()).then((data) => {
@@ -55,8 +56,7 @@ export default {
 </script>
 
 <style scoped>
-
-.searchIcon{
+.searchIcon {
   position: relative;
   width: 35px;
   height: 25px;
@@ -65,11 +65,11 @@ export default {
   cursor: pointer;
 }
 
-.form{
+.form {
   margin-top: 1vh;
 }
 
-.form-field{
+.form-field {
   margin: 10px 0;
   min-width: 45vw;
   outline: none;
@@ -84,11 +84,11 @@ header {
   justify-content: center;
 }
 
-main{
+main {
   margin-bottom: 50px;
 }
 
-.movie{
+.movie {
   margin: 3px 10px;
 }
 
@@ -98,7 +98,7 @@ main{
 }
 
 @media (min-width: 450px) {
-  .searchIcon{
+  .searchIcon {
     left: 48.5vw;
   }
 
