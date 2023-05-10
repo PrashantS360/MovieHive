@@ -13,7 +13,7 @@ export default {
             const route = useRoute();
             this.imdbId = route.params.id;
             for (let i = 100; i <= 300; i++) {
-                fetch(`https://www.omdbapi.com/?i=${route.params.id}&apikey=b28898c5`).then(res => res.json()).then((data) => {
+                fetch(`https://www.omdbapi.com/?i=${route.params.id}&apikey=3adf314a`).then(res => res.json()).then((data) => {
                     if (!data.Error && data.Title && data.Poster != "N/A" && data.Released != "N/A" && data.imdbRating != "N/A" && data.Genre != "N/A" && data.Plot != "N/A") {
                         this.movie = data;
                     }

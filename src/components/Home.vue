@@ -27,7 +27,7 @@ export default {
   methods: {
     getMovies() {
       for (let i = 100; i <= 300; i++) {
-        fetch(`https://www.omdbapi.com/?i=tt3896${i}&apikey=b28898c5`).then(res => res.json()).then((data) => {
+        fetch(`https://www.omdbapi.com/?i=tt3896${i}&apikey=3adf314a`).then(res => res.json()).then((data) => {
           if (!data.Error && data.Title && data.Poster!="N/A" && data.Released!="N/A" && data.imdbRating!="N/A" && data.Genre!="N/A" && data.Plot!="N/A") {
             this.movies.push(data);
           }
@@ -37,7 +37,7 @@ export default {
     searchMovies() {
       if (this.title.length) {
         this.movies = [];
-        fetch(`https://www.omdbapi.com/?&t=${this.title}&apikey=b28898c5`).then(res => res.json()).then((data) => {
+        fetch(`https://www.omdbapi.com/?&t=${this.title}&apikey=3adf314a`).then(res => res.json()).then((data) => {
           if (!data.Error && data.Title) {
             this.movies.push(data);
           }
