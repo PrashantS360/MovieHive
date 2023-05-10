@@ -7,7 +7,7 @@ import Movies from './Movies.vue'
     <div class="form">
       <img src="/search.png" alt="searchIcon" class="searchIcon">
       <input class="form-field" placeholder="Search movies by their titles" type="text" v-model="title"
-        @change="() => { this.searchMovies() }">
+        @change="this.searchMovies()">
     </div>
   </header>
 
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    getMovies() {
+    getMovies: function() {
       for (let i = 100; i <= 300; i++) {
         fetch(`https://www.omdbapi.com/?i=tt3896${i}&apikey=3adf314a`).then(res => res.json()).then((data) => {
           if (!data.Error && data.Title && data.Poster != "N/A" && data.Released != "N/A" && data.imdbRating != "N/A" && data.Genre != "N/A" && data.Plot != "N/A") {
