@@ -7,7 +7,7 @@ import Movies from './Movies.vue'
     <div class="form">
       <img src="/search.png" alt="searchIcon" class="searchIcon">
       <input class="form-field" placeholder="Search movies by their titles" type="text" v-model="title"
-        @change="this.searchMovies()">
+        @change="searchMovies">
     </div>
   </header>
 
